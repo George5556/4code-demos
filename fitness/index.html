@@ -81,7 +81,12 @@
   <main>
     <!-- Hero -->
     <section class="relative overflow-hidden border-b border-border py-14 sm:py-20 lg:py-24">
-      <div class="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[110px]" aria-hidden="true"></div>
+      <!-- Реальное фото зала на фоне с тёмным градиентом -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <img src="gym-photo.jpg" alt="" class="h-full w-full object-cover object-center opacity-20" />
+        <div class="absolute inset-0 bg-gradient-to-r from-bg via-bg/90 to-bg/65"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/85"></div>
+      </div>
 
       <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
         <div class="lg:col-span-7">
@@ -99,7 +104,7 @@
             <button type="button" class="open-booking-modal rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover">
               Пробная тренировка 0 ₽
             </button>
-            <a href="#plans" class="rounded-xl border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
+            <a href="#plans" class="rounded-xl border border-border bg-surface/90 backdrop-blur px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
               Собрать абонемент
             </a>
           </div>
@@ -120,17 +125,23 @@
           </div>
         </div>
 
-        <!-- Правый визуал клуба -->
-        <div class="lg:col-span-5 flex flex-col items-center justify-center">
-          <div class="relative flex h-64 w-64 items-center justify-center sm:h-72 sm:w-72">
-            <svg viewBox="0 0 260 260" class="h-full w-full" fill="none" aria-hidden="true">
-              <circle cx="130" cy="130" r="118" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.3" />
-              <circle cx="130" cy="130" r="95" stroke="#F59E0B" stroke-width="6" />
-              <circle cx="130" cy="130" r="64" fill="#16161B" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="16 12" />
-              <circle cx="130" cy="130" r="20" fill="#F59E0B" />
-            </svg>
-            <div class="absolute -bottom-3 rounded-xl border border-border bg-surface px-4 py-2 text-xs font-semibold shadow-xl">
-              Загрузка зала сейчас: <span class="text-accent">34% · Свободно</span>
+        <!-- Правая карточка с реальным фото зала -->
+        <div class="lg:col-span-5">
+          <div class="relative overflow-hidden rounded-2xl border border-border bg-surface p-2 shadow-2xl">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img
+                src="gym-photo.jpg"
+                alt="Интерьер тренажёрного зала IRONBASE"
+                class="h-full w-full object-cover object-center"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-bg/85 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 rounded-xl border border-border bg-bg/90 px-4 py-2.5 backdrop-blur-md">
+                <div>
+                  <p class="text-[11px] text-muted">Загрузка клуба сейчас</p>
+                  <p class="text-xs font-bold text-white">Свободные стойки и зона бокса</p>
+                </div>
+                <span class="rounded-lg bg-accent px-2.5 py-1 text-xs font-extrabold text-bg">34%</span>
+              </div>
             </div>
           </div>
         </div>
