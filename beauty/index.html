@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMI — Студия красоты и ухода</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#110F10',
+            surface: '#1A1618',
+            border: '#2D2528',
+            accent: '#E29578',
+            'accent-hover': '#D07E60',
+            muted: '#A89F9F',
+          },
+          fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background-color: #110F10; color: #FFFFFF; font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="bg-bg text-white antialiased selection:bg-accent selection:text-bg">
+
+  <!-- Шапка -->
+  <header class="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#" class="text-xl font-extrabold tracking-tight">
+        LUMI <span class="text-accent font-medium text-sm ml-1">BEAUTY</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-muted">
+        <a href="#services" class="hover:text-white transition-colors">Услуги и запись</a>
+        <a href="#masters" class="hover:text-white transition-colors">Мастера</a>
+        <a href="#contacts" class="hover:text-white transition-colors">Контакты</a>
+      </nav>
+      <a href="#services" class="rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg transition-colors hover:bg-accent-hover sm:text-sm">
+        Записаться онлайн
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="border-b border-border py-14 sm:py-20 lg:py-24">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-muted">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            <span>Открыты ежедневно · 10:00–22:00</span>
+          </div>
+          <h1 class="mt-6 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
+            Эстетика ухода без спешки и <span class="text-accent">лишних слов</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            Стрижки, сложное окрашивание, маникюр и уход за кожей в центре города. Выберите процедуру, мастера и удобное время за 30 секунд.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#services" class="rounded-lg bg-accent px-6 py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
+              Выбрать услугу и время →
+            </a>
+            <a href="#masters" class="rounded-lg border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
+              Наши мастера
+            </a>
+          </div>
+        </div>
+
+        <!-- Интерактивная мини-карточка ближайших окон -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex items-center justify-between border-b border-border pb-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-muted">Ближайшие окна сегодня</p>
+                <p class="mt-1 text-lg font-bold text-white">Онлайн-витрина записи</p>
+              </div>
+              <span class="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">4.9 ★</span>
+            </div>
+            <div class="mt-4 space-y-2.5 text-sm">
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <div>
+                  <p class="font-semibold text-white">Маникюр + гель-лак</p>
+                  <p class="text-xs text-muted">Мастер Алина · 1 ч 30 мин</p>
+                </div>
+                <span class="font-bold text-accent">2 400 ₽</span>
+              </div>
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <div>
+                  <p class="font-semibold text-white">Стрижка и укладка</p>
+                  <p class="text-xs text-muted">Топ-стилист Мария · 1 ч</p>
+                </div>
+                <span class="font-bold text-accent">2 900 ₽</span>
+              </div>
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <div>
+                  <p class="font-semibold text-white">Архитектура бровей</p>
+                  <p class="text-xs text-muted">Мастер Ксения · 45 мин</p>
+                </div>
+                <span class="font-bold text-accent">1 600 ₽</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Интерактивный подбор записи -->
+    <section id="services" class="border-b border-border py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent">Запись онлайн</p>
+          <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Соберите свой визит</h2>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-12">
+          <!-- Выбор категории и услуг -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex flex-wrap gap-2" id="cat-tabs">
+              <button type="button" data-cat="nails" class="cat-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg">Ногтевой сервис</button>
+              <button type="button" data-cat="hair" class="cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">Волосы</button>
+              <button type="button" data-cat="face" class="cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">Брови и лицо</button>
+            </div>
+            <div id="service-list" class="space-y-2.5"></div>
+          </div>
+
+          <!-- Выбор времени и итог -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border border-border bg-surface p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-muted">1. Выберите время</p>
+              <div class="mt-3 grid grid-cols-4 gap-2" id="time-slots">
+                <button type="button" class="slot-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent">12:00</button>
+                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">14:30</button>
+                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">17:00</button>
+                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">19:30</button>
+              </div>
+
+              <div class="mt-6 border-t border-border pt-4">
+                <p class="text-xs text-muted">Выбранная услуга:</p>
+                <p id="selected-service-name" class="mt-1 text-base font-bold text-white">Маникюр + покрытие гель-лак</p>
+                <div class="mt-3 flex items-center justify-between text-sm">
+                  <span class="text-muted">Время: <strong id="selected-time" class="text-white">12:00</strong></span>
+                  <span id="selected-price" class="text-2xl font-extrabold text-accent">2 400 ₽</span>
+                </div>
+              </div>
+
+              <button id="book-btn" type="button" class="mt-5 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
+                Подтвердить запись
+              </button>
+              <p id="book-msg" class="mt-3 hidden text-center text-xs font-semibold text-accent">
+                ✓ Запись в демо-режиме подтверждена! Уведомление отправляется в Telegram.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Мастера -->
+    <section id="masters" class="border-b border-border py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Команда мастеров</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">А</div>
+            <h3 class="mt-4 text-lg font-bold">Алина Волкова</h3>
+            <p class="mt-1 text-xs text-accent">Топ-мастер маникюра</p>
+            <p class="mt-3 text-sm text-muted">Идеальный блик, укрепление гелем и чистый комбинированный маникюр.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">М</div>
+            <h3 class="mt-4 text-lg font-bold">Мария Соколова</h3>
+            <p class="mt-1 text-xs text-accent">Стилист-колорист</p>
+            <p class="mt-3 text-sm text-muted">Сложные техники Airtouch, шатуш и стрижки, которые легко укладывать дома.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">К</div>
+            <h3 class="mt-4 text-lg font-bold">Ксения Орлова</h3>
+            <p class="mt-1 text-xs text-accent">Бровист-визажист</p>
+            <p class="mt-3 text-sm text-muted">Естественная архитектура бровей, ламинирование и дневной/вечерний макияж.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacts" class="py-10 text-xs text-muted">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div>
+        <p class="text-sm font-bold text-white">LUMI BEAUTY</p>
+        <p class="mt-1">ул. Большая Конюшенная, 18 · Ежедневно 10:00–22:00</p>
+      </div>
+      <p>Демо-проект студии <span class="font-bold text-white">4CODE</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const DATA = {
+      nails: [
+        { name: 'Маникюр + покрытие гель-лак', time: '90 мин', price: '2 400 ₽' },
+        { name: 'Смарт-педикюр с покрытием', time: '90 мин', price: '3 100 ₽' },
+        { name: 'Наращивание + дизайн', time: '120 мин', price: '3 800 ₽' },
+      ],
+      hair: [
+        { name: 'Женская стрижка и укладка', time: '60 мин', price: '2 900 ₽' },
+        { name: 'Окрашивание Airtouch', time: '240 мин', price: '8 500 ₽' },
+        { name: 'Уход «Абсолютное счастье»', time: '60 мин', price: '3 500 ₽' },
+      ],
+      face: [
+        { name: 'Архитектура + окрашивание бровей', time: '45 мин', price: '1 600 ₽' },
+        { name: 'Ламинирование ресниц', time: '60 мин', price: '2 200 ₽' },
+        { name: 'Уходовая чистка лица', time: '75 мин', price: '3 200 ₽' },
+      ],
+    };
+
+    const listEl = document.getElementById('service-list');
+    const nameEl = document.getElementById('selected-service-name');
+    const priceEl = document.getElementById('selected-price');
+    const timeEl = document.getElementById('selected-time');
+    const bookMsg = document.getElementById('book-msg');
+
+    function renderServices(cat) {
+      listEl.innerHTML = '';
+      DATA[cat].forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full flex items-center justify-between rounded-xl border px-4 py-3.5 text-left transition-colors ${
+          idx === 0 ? 'border-accent bg-surface' : 'border-border bg-surface/60 hover:border-muted'
+        }`;
+        btn.innerHTML = `<div><p class="text-sm font-bold text-white">${item.name}</p><p class="text-xs text-muted">${item.time}</p></div><span class="text-sm font-extrabold text-accent">${item.price}</span>`;
+        btn.addEventListener('click', () => {
+          listEl.querySelectorAll('button').forEach((b) => {
+            b.classList.remove('border-accent', 'bg-surface');
+            b.classList.add('border-border', 'bg-surface/60');
+          });
+          btn.classList.add('border-accent', 'bg-surface');
+          btn.classList.remove('border-border', 'bg-surface/60');
+          nameEl.textContent = item.name;
+          priceEl.textContent = item.price;
+          bookMsg.classList.add('hidden');
+        });
+        listEl.appendChild(btn);
+      });
+      nameEl.textContent = DATA[cat][0].name;
+      priceEl.textContent = DATA[cat][0].price;
+    }
+
+    document.querySelectorAll('.cat-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-btn').forEach((b) => {
+          b.className = 'cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white';
+        });
+        btn.className = 'cat-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg';
+        renderServices(btn.dataset.cat);
+      });
+    });
+
+    document.querySelectorAll('.slot-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.slot-btn').forEach((b) => {
+          b.className = 'slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white';
+        });
+        btn.className = 'slot-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent';
+        timeEl.textContent = btn.textContent;
+      });
+    });
+
+    document.getElementById('book-btn').addEventListener('click', () => {
+      bookMsg.classList.remove('hidden');
+    });
+
+    renderServices('nails');
+  </script>
+</body>
+</html>

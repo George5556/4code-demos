@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIXLAB — Срочный ремонт смартфонов и ноутбуков</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0B0D10',
+            surface: '#13171D',
+            border: '#232933',
+            accent: '#10B981',
+            'accent-hover': '#059669',
+            muted: '#94A3B8',
+          },
+          fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background-color: #0B0D10; color: #FFFFFF; font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="bg-bg text-white antialiased selection:bg-accent selection:text-bg">
+
+  <header class="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#" class="text-xl font-extrabold tracking-tight">
+        FIX<span class="text-accent">LAB</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-muted">
+        <a href="#calc" class="hover:text-white transition-colors">Калькулятор ремонта</a>
+        <a href="#guarantees" class="hover:text-white transition-colors">Гарантии</a>
+        <a href="#contacts" class="hover:text-white transition-colors">Сервисный центр</a>
+      </nav>
+      <a href="#calc" class="rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg transition-colors hover:bg-accent-hover sm:text-sm">
+        Рассчитать стоимость
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="border-b border-border py-14 sm:py-20 lg:py-24">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-muted">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            <span>Бесплатная диагностика за 15 минут · Гарантия 1 год</span>
+          </div>
+          <h1 class="mt-6 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
+            Ремонт телефонов и ноутбуков <span class="text-accent">при вас за 40 минут</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            Оригинальные запчасти в наличии, честная цена до начала работ и фотоотчёт ремонта. Выберите устройство и поломку — сразу покажем точную смету.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#calc" class="rounded-lg bg-accent px-6 py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
+              Узнать цену ремонта →
+            </a>
+            <a href="#guarantees" class="rounded-lg border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
+              Условия гарантии
+            </a>
+          </div>
+        </div>
+
+        <!-- Быстрая сводка -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex items-center justify-between border-b border-border pb-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-muted">Склад запчастей</p>
+                <p class="mt-1 text-lg font-bold text-white">В наличии сегодня</p>
+              </div>
+              <span class="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent">92% за 1 визит</span>
+            </div>
+            <div class="mt-4 space-y-2.5 text-sm">
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <span>Замена дисплея iPhone 13–15</span>
+                <span class="font-bold text-accent">40 мин</span>
+              </div>
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <span>Замена аккумулятора</span>
+                <span class="font-bold text-accent">25 мин</span>
+              </div>
+              <div class="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
+                <span>Чистка и термопаста MacBook</span>
+                <span class="font-bold text-accent">50 мин</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Интерактивный калькулятор ремонта -->
+    <section id="calc" class="border-b border-border py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent">Калькулятор</p>
+        <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Выберите устройство и неисправность</h2>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-12">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex flex-wrap gap-2" id="device-tabs">
+              <button type="button" data-dev="iphone" class="dev-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg">iPhone</button>
+              <button type="button" data-dev="android" class="dev-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">Samsung / Xiaomi</button>
+              <button type="button" data-dev="laptop" class="dev-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">MacBook / Ноутбуки</button>
+            </div>
+            <div id="repair-list" class="space-y-2.5"></div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border border-border bg-surface p-6">
+              <p class="text-xs uppercase tracking-wider text-muted">Итог расчёта</p>
+              <p id="rep-name" class="mt-2 text-lg font-bold text-white">Замена дисплея (оригинал)</p>
+              <div class="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm">
+                <span class="text-muted">Срок: <strong id="rep-time" class="text-white">40 мин</strong></span>
+                <span id="rep-price" class="text-2xl font-extrabold text-accent">6 900 ₽</span>
+              </div>
+              <p class="mt-3 text-xs text-muted">Гарантия 12 месяцев на деталь и работу мастера.</p>
+              <button id="rep-btn" type="button" class="mt-5 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
+                Забронировать деталь
+              </button>
+              <p id="rep-msg" class="mt-3 hidden text-center text-xs font-semibold text-accent">
+                ✓ Деталь зарезервирована в демо-режиме на 24 часа.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Гарантии -->
+    <section id="guarantees" class="border-b border-border py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-5 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <p class="text-2xl font-extrabold text-accent">0 ₽</p>
+            <h3 class="mt-2 font-bold">Диагностика всегда бесплатно</h3>
+            <p class="mt-2 text-sm text-muted">Даже если вы откажетесь от ремонта после выявления причины.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <p class="text-2xl font-extrabold text-accent">12 мес</p>
+            <h3 class="mt-2 font-bold">Официальная гарантия</h3>
+            <p class="mt-2 text-sm text-muted">Выдаём гарантийный талон и чек после проверки устройства.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <p class="text-2xl font-extrabold text-accent">100%</p>
+            <h3 class="mt-2 font-bold">Сохранность данных</h3>
+            <p class="mt-2 text-sm text-muted">Не сбрасываем устройство и не просим пароли, если этого не требует тест.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacts" class="py-10 text-xs text-muted">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div>
+        <p class="text-sm font-bold text-white">FIXLAB SERVICE</p>
+        <p class="mt-1">пр. Лиговский, 74 · Ежедневно 10:00–21:00</p>
+      </div>
+      <p>Демо-проект студии <span class="font-bold text-white">4CODE</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const REPAIRS = {
+      iphone: [
+        { name: 'Замена дисплея (оригинал)', time: '40 мин', price: '6 900 ₽' },
+        { name: 'Замена аккумулятора 100%', time: '25 мин', price: '2 900 ₽' },
+        { name: 'Замена заднего стекла (лазер)', time: '60 мин', price: '4 200 ₽' },
+      ],
+      android: [
+        { name: 'Замена экрана AMOLED', time: '45 мин', price: '5 400 ₽' },
+        { name: 'Замена разъёма зарядки Type-C', time: '35 мин', price: '2 200 ₽' },
+        { name: 'Восстановление после влаги', time: '90 мин', price: '3 500 ₽' },
+      ],
+      laptop: [
+        { name: 'Чистка + замена термопасты', time: '50 мин', price: '2 500 ₽' },
+        { name: 'Замена матрицы / экрана', time: '120 мин', price: '11 900 ₽' },
+        { name: 'Замена клавиатуры или АКБ', time: '60 мин', price: '5 800 ₽' },
+      ],
+    };
+
+    const listEl = document.getElementById('repair-list');
+    const nameEl = document.getElementById('rep-name');
+    const timeEl = document.getElementById('rep-time');
+    const priceEl = document.getElementById('rep-price');
+    const msgEl = document.getElementById('rep-msg');
+
+    function renderRepairs(dev) {
+      listEl.innerHTML = '';
+      REPAIRS[dev].forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full flex items-center justify-between rounded-xl border px-4 py-3.5 text-left transition-colors ${
+          idx === 0 ? 'border-accent bg-surface' : 'border-border bg-surface/60 hover:border-muted'
+        }`;
+        btn.innerHTML = `<div><p class="text-sm font-bold text-white">${item.name}</p><p class="text-xs text-muted">${item.time}</p></div><span class="text-sm font-extrabold text-accent">${item.price}</span>`;
+        btn.addEventListener('click', () => {
+          listEl.querySelectorAll('button').forEach((b) => {
+            b.classList.remove('border-accent', 'bg-surface');
+            b.classList.add('border-border', 'bg-surface/60');
+          });
+          btn.classList.add('border-accent', 'bg-surface');
+          btn.classList.remove('border-border', 'bg-surface/60');
+          nameEl.textContent = item.name;
+          timeEl.textContent = item.time;
+          priceEl.textContent = item.price;
+          msgEl.classList.add('hidden');
+        });
+        listEl.appendChild(btn);
+      });
+      nameEl.textContent = REPAIRS[dev][0].name;
+      timeEl.textContent = REPAIRS[dev][0].time;
+      priceEl.textContent = REPAIRS[dev][0].price;
+    }
+
+    document.querySelectorAll('.dev-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.dev-btn').forEach((b) => {
+          b.className = 'dev-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white';
+        });
+        btn.className = 'dev-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg';
+        renderRepairs(btn.dataset.dev);
+      });
+    });
+
+    document.getElementById('rep-btn').addEventListener('click', () => {
+      msgEl.classList.remove('hidden');
+    });
+
+    renderRepairs('iphone');
+  </script>
+</body>
+</html>
