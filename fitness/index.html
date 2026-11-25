@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IRONBASE — Фитнес-клуб и тренажёрный зал</title>
+  <title>IRONBASE — Фитнес-клуб 1 800 м² · Тренажёрный зал, кроссфит, сауна</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -26,133 +26,316 @@
     };
   </script>
   <style>
-    body { background-color: #0E0E10; color: #FFFFFF; font-family: 'Manrope', sans-serif; }
+    body {
+      background-color: #0E0E10;
+      color: #FFFFFF;
+      font-family: 'Manrope', sans-serif;
+    }
+    .bg-pinstripe {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.018) 0px,
+        rgba(255, 255, 255, 0.018) 1px,
+        transparent 1px,
+        transparent 14px
+      );
+    }
+    .ymap-dark {
+      filter: invert(92%) hue-rotate(180deg) brightness(94%) contrast(92%);
+    }
   </style>
 </head>
-<body class="bg-bg text-white antialiased selection:bg-accent selection:text-bg">
+<body class="bg-bg bg-pinstripe text-white antialiased selection:bg-accent selection:text-bg">
 
+  <!-- Шапка -->
   <header class="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-md">
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-      <a href="#" class="text-xl font-extrabold tracking-tight">
-        IRON<span class="text-accent">BASE</span>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <a href="#" class="inline-flex items-center gap-2.5 text-lg font-extrabold tracking-tight">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-black text-bg shadow-lg shadow-accent/25">IB</span>
+        <span>IRON<span class="text-accent">BASE</span></span>
       </a>
-      <nav class="hidden md:flex items-center gap-7 text-sm text-muted">
+
+      <div class="hidden lg:inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1 text-xs text-muted">
+        <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+        <span>Клуб открыт <span class="text-emerald-400 font-medium">· 07:00–23:00</span></span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-muted">
         <a href="#plans" class="hover:text-white transition-colors">Абонементы</a>
         <a href="#schedule" class="hover:text-white transition-colors">Расписание</a>
-        <a href="#contacts" class="hover:text-white transition-colors">Адрес клуба</a>
+        <a href="#reviews" class="hover:text-white transition-colors">Отзывы</a>
+        <a href="#map" class="hover:text-white transition-colors">Карта</a>
       </nav>
-      <a href="#plans" class="rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg transition-colors hover:bg-accent-hover sm:text-sm">
-        Пробная тренировка
-      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+78125507710" class="hidden sm:inline-block text-sm font-semibold text-white hover:text-accent transition-colors">
+          +7 (812) 550-77-10
+        </a>
+        <button type="button" class="open-booking-modal rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg transition-colors hover:bg-accent-hover sm:text-sm">
+          Гостевой визит
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
     <!-- Hero -->
-    <section class="border-b border-border py-14 sm:py-20 lg:py-24">
-      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+    <section class="relative overflow-hidden border-b border-border py-14 sm:py-20 lg:py-24">
+      <div class="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[110px]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
         <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-muted">
-            <span class="h-2 w-2 rounded-full bg-accent"></span>
-            <span>Тренажёрный зал · Функциональный тренинг · Сауна</span>
-          </div>
-          <h1 class="mt-6 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
-            1 800 м² железа, воздуха и <span class="text-accent">честных абонементов</span>
-          </h1>
-          <p class="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Без навязанных годовых контрактов и очередей к тренажёрам. Рассчитайте стоимость карты под ваш срок и приходите на бесплатную гостевую тренировку.
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">
+            ФИТНЕС-КЛУБ · ПРИМОРСКИЙ И МОСКОВСКИЙ РАЙОНЫ
           </p>
+          <h1 class="mt-4 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[54px]">
+            1 800 м² железа и <span class="text-accent">честных</span> абонементов
+          </h1>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            Тренажёрный зал без очередей к стойкам, зона единоборств, групповые программы и финская сауна. Помесячная оплата без скрытых годовых контрактов.
+          </p>
+
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#plans" class="rounded-lg bg-accent px-6 py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
-              Выбрать абонемент →
+            <button type="button" class="open-booking-modal rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover">
+              Пробная тренировка 0 ₽
+            </button>
+            <a href="#plans" class="rounded-xl border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
+              Собрать абонемент
             </a>
-            <a href="#schedule" class="rounded-lg border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
-              Расписание групп
-            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6 max-w-lg text-xs sm:text-sm">
+            <div>
+              <p class="text-muted">Режим</p>
+              <p class="mt-1 font-bold text-white">Ежедневно 7–23</p>
+            </div>
+            <div>
+              <p class="text-muted">Рейтинг</p>
+              <p class="mt-1 font-bold text-white">4.9 на Яндекс Картах</p>
+            </div>
+            <div>
+              <p class="text-muted">Отзывов</p>
+              <p class="mt-1 font-bold text-white">310 реальных</p>
+            </div>
           </div>
         </div>
 
-        <!-- Интерактивный расчёт карты -->
-        <div class="lg:col-span-5" id="plans">
-          <div class="rounded-2xl border border-border bg-surface p-6">
-            <div class="flex items-center justify-between border-b border-border pb-4">
-              <div>
-                <p class="text-xs uppercase tracking-wider text-muted">Конструктор карты</p>
-                <p class="mt-1 text-lg font-bold text-white">Соберите абонемент</p>
+        <!-- Правый визуал клуба -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+          <div class="relative flex h-64 w-64 items-center justify-center sm:h-72 sm:w-72">
+            <svg viewBox="0 0 260 260" class="h-full w-full" fill="none" aria-hidden="true">
+              <circle cx="130" cy="130" r="118" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.3" />
+              <circle cx="130" cy="130" r="95" stroke="#F59E0B" stroke-width="6" />
+              <circle cx="130" cy="130" r="64" fill="#16161B" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="16 12" />
+              <circle cx="130" cy="130" r="20" fill="#F59E0B" />
+            </svg>
+            <div class="absolute -bottom-3 rounded-xl border border-border bg-surface px-4 py-2 text-xs font-semibold shadow-xl">
+              Загрузка зала сейчас: <span class="text-accent">34% · Свободно</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Конструктор абонемента + зоны клуба -->
+    <section id="plans" class="border-b border-border py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-start gap-8 lg:grid-cols-12">
+          <div class="lg:col-span-7">
+            <p class="text-xs font-bold uppercase tracking-widest text-accent">Пространство клуба</p>
+            <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-4xl">Всё входит в базовую карту</h2>
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-border bg-surface p-5">
+                <p class="text-sm font-bold text-white">Силовая зона 900 м²</p>
+                <p class="mt-1.5 text-xs text-muted">6 силовых рам, гантельный ряд до 60 кг, профессиональные тренажёры.</p>
               </div>
-              <span class="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent">07:00–23:00</span>
-            </div>
-
-            <div class="mt-4">
-              <p class="text-xs text-muted">Срок действия:</p>
-              <div class="mt-2 grid grid-cols-3 gap-2" id="month-btns">
-                <button type="button" data-price="3200" class="month-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">1 мес</button>
-                <button type="button" data-price="8400" class="month-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent">3 мес</button>
-                <button type="button" data-price="24900" class="month-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">12 мес</button>
+              <div class="rounded-2xl border border-border bg-surface p-5">
+                <p class="text-sm font-bold text-white">Функционал и бокс</p>
+                <p class="mt-1.5 text-xs text-muted">Ринг, боксёрские мешки, гребные тренажёры Concept2 и турники.</p>
+              </div>
+              <div class="rounded-2xl border border-border bg-surface p-5">
+                <p class="text-sm font-bold text-white">Финская сауна</p>
+                <p class="mt-1.5 text-xs text-muted">Раздельные сауны в мужской и женской раздевалках + просторный душ.</p>
+              </div>
+              <div class="rounded-2xl border border-border bg-surface p-5">
+                <p class="text-sm font-bold text-white">Полотенце и вода</p>
+                <p class="mt-1.5 text-xs text-muted">Фильтрованная вода, фен Dyson и чистые шкафчики с браслетом.</p>
               </div>
             </div>
+          </div>
 
-            <div class="mt-4 space-y-2">
-              <label class="flex cursor-pointer items-center justify-between rounded-xl border border-border bg-bg px-4 py-3 text-xs">
-                <span>Групповые тренировки + сауна</span>
-                <input id="opt-group" type="checkbox" checked class="accent-amber-500 h-4 w-4" />
-              </label>
-              <label class="flex cursor-pointer items-center justify-between rounded-xl border border-border bg-bg px-4 py-3 text-xs">
-                <span>Вводная тренировка с тренером (+1 500 ₽)</span>
-                <input id="opt-coach" type="checkbox" class="accent-amber-500 h-4 w-4" />
-              </label>
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border border-accent/50 bg-surface p-6">
+              <div class="flex items-center justify-between border-b border-border pb-4">
+                <p class="text-lg font-bold text-white">Конструктор карты</p>
+                <div class="inline-flex rounded-lg border border-border bg-bg p-0.5 text-[11px] font-semibold">
+                  <button type="button" data-mode="1" class="mode-btn rounded px-2.5 py-1 bg-accent text-bg">Полный день</button>
+                  <button type="button" data-mode="0.8" class="mode-btn rounded px-2.5 py-1 text-muted hover:text-white">Дневная</button>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <p class="text-xs text-muted">Срок карты:</p>
+                <div class="mt-2 grid grid-cols-3 gap-2">
+                  <button type="button" data-price="3200" class="month-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">1 мес</button>
+                  <button type="button" data-price="8400" class="month-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent">3 мес</button>
+                  <button type="button" data-price="24900" class="month-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">12 мес</button>
+                </div>
+              </div>
+
+              <div class="mt-4 space-y-2">
+                <label class="flex cursor-pointer items-center justify-between rounded-xl border border-border bg-bg px-4 py-3 text-xs">
+                  <span>Вводная с тренером (+1 500 ₽)</span>
+                  <input id="opt-coach" type="checkbox" class="accent-amber-500 h-4 w-4" />
+                </label>
+                <label class="flex cursor-pointer items-center justify-between rounded-xl border border-border bg-bg px-4 py-3 text-xs">
+                  <span>Личный шкафчик (+900 ₽)</span>
+                  <input id="opt-locker" type="checkbox" class="accent-amber-500 h-4 w-4" />
+                </label>
+              </div>
+
+              <div class="mt-5 flex items-center justify-between border-t border-border pt-4">
+                <span class="text-xs text-muted">Итого к оплате:</span>
+                <span id="fit-price" class="text-2xl font-extrabold text-accent tabular-nums">8 400 ₽</span>
+              </div>
+
+              <button id="fit-btn" type="button" class="mt-4 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-bg hover:bg-accent-hover">
+                Зафиксировать стоимость
+              </button>
+              <p id="fit-msg" class="mt-3 hidden text-center text-xs font-semibold text-emerald-400">
+                ✓ Гостевой визит и цена зафиксированы (демо-режим).
+              </p>
             </div>
-
-            <div class="mt-5 flex items-center justify-between border-t border-border pt-4">
-              <span class="text-xs text-muted">Итого к оплате:</span>
-              <span id="fit-price" class="text-2xl font-extrabold text-accent">8 400 ₽</span>
-            </div>
-
-            <button id="fit-btn" type="button" class="mt-4 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
-              Записаться на пробную
-            </button>
-            <p id="fit-msg" class="mt-3 hidden text-center text-xs font-semibold text-accent">
-              ✓ Гостевой пропуск оформлен (демо-режим).
-            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Расписание -->
-    <section id="schedule" class="border-b border-border py-16">
+    <section id="schedule" class="border-b border-border py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Групповые тренировки</h2>
-          <div class="flex gap-2" id="day-tabs">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-accent">Группы</p>
+            <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Расписание тренировок</h2>
+          </div>
+          <div class="flex gap-2">
             <button type="button" data-day="mon" class="day-btn rounded-lg bg-accent px-3.5 py-2 text-xs font-bold text-bg">Пн / Ср / Пт</button>
             <button type="button" data-day="tue" class="day-btn rounded-lg border border-border bg-surface px-3.5 py-2 text-xs font-semibold text-muted hover:text-white">Вт / Чт / Сб</button>
           </div>
         </div>
-
         <div id="schedule-grid" class="mt-6 grid gap-4 sm:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Отзывы Яндекс Карт -->
+    <section id="reviews" class="border-b border-border py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-accent">Отзывы резидентов</p>
+            <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Отзывы на Яндекс Картах</h2>
+          </div>
+          <div class="inline-flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm">
+            <span class="text-xl font-extrabold text-accent">4.9 ★</span>
+            <span class="text-xs text-muted">310 оценок · Яндекс Карты</span>
+          </div>
+        </div>
+
+        <div id="reviews-grid" class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+        <div class="mt-6 text-center">
+          <button id="more-reviews-btn" type="button" class="rounded-xl border border-border bg-surface px-6 py-2.5 text-xs font-semibold text-white hover:border-accent">
+            Показать ещё отзывы (3)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Яндекс Карта и филиалы -->
+    <section id="map" class="border-b border-border py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest text-accent">Адреса клубов</p>
+        <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Как добраться и парковка</h2>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-12">
+          <div class="lg:col-span-4 space-y-3">
+            <button type="button" data-ll="30.2286,59.9888" data-addr="ул. Савушкина, 118 · м. Беговая (4 мин) · Своя парковка" data-link="https://yandex.ru/maps/?pt=30.2286,59.9888&z=16" class="branch-btn w-full rounded-2xl border border-accent bg-surface p-5 text-left">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-white">Клуб Приморский</span>
+                <span class="text-[11px] font-semibold text-accent">Выбран</span>
+              </div>
+              <p class="mt-1.5 text-xs text-muted">ул. Савушкина, 118 · м. Беговая</p>
+              <p class="mt-2 text-xs text-white">Ежедневно 07:00–23:00</p>
+            </button>
+
+            <button type="button" data-ll="30.3218,59.8595" data-addr="Московский пр., 195 · м. Московская (5 мин) · Парковка 3 ч" data-link="https://yandex.ru/maps/?pt=30.3218,59.8595&z=16" class="branch-btn w-full rounded-2xl border border-border bg-surface/60 p-5 text-left hover:border-muted">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-white">Клуб Московский</span>
+                <span class="text-[11px] text-muted">5 мин от метро</span>
+              </div>
+              <p class="mt-1.5 text-xs text-muted">Московский пр., 195</p>
+              <p class="mt-2 text-xs text-white">Ежедневно 07:00–23:00</p>
+            </button>
+
+            <a id="ymap-ext-link" href="https://yandex.ru/maps/?pt=30.2286,59.9888&z=16" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-bg py-3 text-xs font-semibold text-white hover:border-accent">
+              Открыть маршрут в Яндекс Картах ↗
+            </a>
+          </div>
+
+          <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-border bg-surface">
+            <div class="flex items-center justify-between border-b border-border px-4 py-2.5 text-xs text-muted">
+              <span id="map-addr-label" class="text-white font-medium">ул. Савушкина, 118 · м. Беговая (4 мин) · Своя парковка</span>
+              <span>Яндекс Карты</span>
+            </div>
+            <iframe
+              id="ymap-frame"
+              title="Карта клуба IRONBASE"
+              src="https://yandex.ru/map-widget/v1/?ll=30.2286%2C59.9888&z=16&pt=30.2286,59.9888,pm2rdm"
+              class="ymap-dark h-[320px] w-full border-0 sm:h-[360px]"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer id="contacts" class="py-10 text-xs text-muted">
+  <footer class="py-10 text-xs text-muted">
     <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
       <div>
         <p class="text-sm font-bold text-white">IRONBASE CLUB</p>
-        <p class="mt-1">ул. Савушкина, 118 · Ежедневно 07:00–23:00</p>
+        <p class="mt-1">Санкт-Петербург · ул. Савушкина, 118 и Московский пр., 195</p>
       </div>
-      <p>Демо-проект студии <span class="font-bold text-white">4CODE</span></p>
+      <p>Демо-сайт создан в студии <span class="font-bold text-white">4CODE</span></p>
     </div>
   </footer>
 
+  <!-- Модалка гостевого визита -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-md rounded-2xl border border-border bg-surface p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold">Пробная тренировка 0 ₽</h3>
+        <button id="close-modal" type="button" class="text-muted hover:text-white">✕</button>
+      </div>
+      <p class="mt-2 text-xs text-muted">Оформим гостевой пропуск в зал и сауну на любой удобный день.</p>
+      <div class="mt-4 space-y-3">
+        <input type="text" placeholder="Ваше имя" class="w-full rounded-lg border border-border bg-bg px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none" />
+        <input type="text" placeholder="Телефон или @telegram" class="w-full rounded-lg border border-border bg-bg px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none" />
+        <button id="m-submit" type="button" class="w-full rounded-xl bg-accent py-3 text-sm font-bold text-bg hover:bg-accent-hover">Получить пропуск</button>
+        <p id="m-done" class="hidden text-center text-xs font-semibold text-emerald-400">✓ Пропуск оформлен (демо-режим)!</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     let basePrice = 8400;
+    let modeFactor = 1;
     const optCoach = document.getElementById('opt-coach');
+    const optLocker = document.getElementById('opt-locker');
     const fitPriceEl = document.getElementById('fit-price');
-    const fitMsg = document.getElementById('fit-msg');
 
     function updatePrice() {
-      const total = basePrice + (optCoach.checked ? 1500 : 0);
+      const total = Math.round(basePrice * modeFactor) + (optCoach.checked ? 1500 : 0) + (optLocker.checked ? 900 : 0);
       fitPriceEl.textContent = `${total.toLocaleString('ru-RU')} ₽`;
     }
 
@@ -167,13 +350,25 @@
       });
     });
 
+    document.querySelectorAll('.mode-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-btn').forEach((b) => {
+          b.className = 'mode-btn rounded px-2.5 py-1 text-muted hover:text-white';
+        });
+        btn.className = 'mode-btn rounded px-2.5 py-1 bg-accent text-bg';
+        modeFactor = Number(btn.dataset.mode);
+        updatePrice();
+      });
+    });
+
     optCoach.addEventListener('change', updatePrice);
-    document.getElementById('fit-btn').addEventListener('click', () => fitMsg.classList.remove('hidden'));
+    optLocker.addEventListener('change', updatePrice);
+    document.getElementById('fit-btn').addEventListener('click', () => document.getElementById('fit-msg').classList.remove('hidden'));
 
     const SCHEDULE = {
       mon: [
         { time: '09:00', title: 'Functional Morning', coach: 'Тренер Егор · Зал B' },
-        { time: '18:30', title: 'CrossTraining', coach: 'Тренер Артём · Зона 1' },
+        { time: '18:30', title: 'CrossTraining Pro', coach: 'Тренер Артём · Зона 1' },
         { time: '20:00', title: 'Stretching & Mobility', coach: 'Тренер Дарья · Зал A' },
       ],
       tue: [
@@ -186,14 +381,12 @@
     const gridEl = document.getElementById('schedule-grid');
     function renderSchedule(day) {
       gridEl.innerHTML = SCHEDULE[day]
-        .map(
-          (item) => `
+        .map((item) => `
           <div class="rounded-2xl border border-border bg-surface p-5">
             <span class="text-xs font-bold text-accent">${item.time}</span>
             <h3 class="mt-2 text-lg font-bold text-white">${item.title}</h3>
             <p class="mt-1 text-xs text-muted">${item.coach}</p>
-          </div>`
-        )
+          </div>`)
         .join('');
     }
 
@@ -207,7 +400,83 @@
       });
     });
 
+    const REVIEWS = [
+      { name: 'Илья В.', date: '21 ноября', text: 'Отличный просторный зал — даже в 7 вечера не приходится ждать жимовую скамью или раму. Отдельное спасибо за чистоту в раздевалке и сауну.', reply: 'Илья, спасибо! Держим планку комфорта на максимуме.' },
+      { name: 'Виктория П.', date: '15 ноября', text: 'Нравится, что можно брать абонемент на 1 или 3 месяца без навязчивых звонков менеджеров. Хожу на растяжку к Дарье.', reply: 'Виктория, передадим отзыв Дарье! Рады видеть на тренировках.' },
+      { name: 'Роман Б.', date: '9 ноября', text: 'Занимаюсь в зоне бокса и кроссфита — инвентарь свежий, вентиляция работает отлично, парковка у клуба всегда выручает.', reply: 'Роман, спасибо за обратную связь!' },
+      { name: 'Алексей К.', date: '1 ноября', text: 'Взял годовой дневной абонемент — цена супер, утром людей мало, тренироваться одно удовольствие.', reply: 'Алексей, продуктивных тренировок!' },
+      { name: 'Кристина Д.', date: '24 октября', text: 'Очень удобное расписание групповых и адекватные тренеры. На вводной тренировке всё грамотно объяснили.', reply: 'Кристина, спасибо за тёплые слова!' },
+      { name: 'Денис М.', date: '17 октября', text: 'Железо качественное, гантельный ряд до 60 кг, блины всегда на местах. Лучший зал в районе.', reply: 'Денис, спасибо за высокую оценку!' },
+    ];
+
+    let visibleReviews = 3;
+    const revGrid = document.getElementById('reviews-grid');
+    const moreRevBtn = document.getElementById('more-reviews-btn');
+
+    function renderReviews() {
+      revGrid.innerHTML = REVIEWS.slice(0, visibleReviews)
+        .map((r) => `
+          <div class="rounded-2xl border border-border bg-surface p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">${r.name}</span>
+                <span class="text-muted">${r.date}</span>
+              </div>
+              <p class="mt-1 text-xs text-accent">★★★★★</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">${r.text}</p>
+            </div>
+            <div class="mt-4 rounded-xl border border-border bg-bg p-3 text-xs text-muted">
+              <span class="font-semibold text-white">Ответ клуба:</span> ${r.reply}
+            </div>
+          </div>`)
+        .join('');
+      moreRevBtn.style.display = visibleReviews >= REVIEWS.length ? 'none' : 'inline-block';
+    }
+
+    moreRevBtn.addEventListener('click', () => {
+      visibleReviews = REVIEWS.length;
+      renderReviews();
+    });
+
+    const ymapFrame = document.getElementById('ymap-frame');
+    const mapAddrLabel = document.getElementById('map-addr-label');
+    const ymapExtLink = document.getElementById('ymap-ext-link');
+
+    document.querySelectorAll('.branch-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.branch-btn').forEach((b) => {
+          b.className = 'branch-btn w-full rounded-2xl border border-border bg-surface/60 p-5 text-left hover:border-muted';
+          b.querySelector('span:last-child').textContent = 'Клуб';
+          b.querySelector('span:last-child').className = 'text-[11px] text-muted';
+        });
+        btn.className = 'branch-btn w-full rounded-2xl border border-accent bg-surface p-5 text-left';
+        btn.querySelector('span:last-child').textContent = 'Выбран';
+        btn.querySelector('span:last-child').className = 'text-[11px] font-semibold text-accent';
+
+        const ll = btn.dataset.ll;
+        ymapFrame.src = `https://yandex.ru/map-widget/v1/?ll=${encodeURIComponent(ll)}&z=16&pt=${ll},pm2rdm`;
+        mapAddrLabel.textContent = btn.dataset.addr;
+        ymapExtLink.href = btn.dataset.link;
+      });
+    });
+
+    const modal = document.getElementById('booking-modal');
+    document.querySelectorAll('.open-booking-modal').forEach((b) => {
+      b.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+    document.getElementById('close-modal').addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+    document.getElementById('m-submit').addEventListener('click', () => {
+      document.getElementById('m-done').classList.remove('hidden');
+    });
+
     renderSchedule('mon');
+    renderReviews();
   </script>
 </body>
 </html>
