@@ -4,21 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4CODE — Живые демо-проекты</title>
+  <script>
+    (function () {
+      const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --bg: #F6F6F8; --surface: #FFFFFF; --border: #E4E4E7; --ink: #111114; --muted: #52525B; }
+    [data-theme="dark"] { --bg: #0E0E10; --surface: #16161A; --border: #26262C; --ink: #FFFFFF; --muted: #A1A1AA; }
+    body { background: var(--bg); color: var(--ink); font-family: system-ui, sans-serif; }
+  </style>
 </head>
-<body class="min-h-screen bg-[#0E0E10] text-white flex items-center justify-center p-6 font-sans">
-  <div class="w-full max-w-xl rounded-2xl border border-[#26262C] bg-[#16161A] p-8">
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-xl rounded-2xl border p-8" style="background: var(--surface); border-color: var(--border);">
     <p class="text-xl font-extrabold"><span class="text-[#FF5500]">4</span>CODE · Демо-проекты</p>
-    <p class="mt-2 text-sm text-[#A1A1AA]">Выберите готовый прототип для просмотра:</p>
+    <p class="mt-2 text-sm" style="color: var(--muted);">Выберите прототип (поддержка светлой и тёмной темы):</p>
     <div class="mt-6 space-y-3 text-sm font-semibold">
-      <a href="./beauty/" class="flex items-center justify-between rounded-xl border border-[#26262C] bg-[#0E0E10] px-4 py-3.5 hover:border-[#FF5500]">
-        <span>Салон красоты «LUMI»</span><span class="text-[#FF5500]">→</span>
+      <a href="./beauty/" class="flex items-center justify-between rounded-xl border px-4 py-3.5 hover:border-[#FF5500]" style="background: var(--bg); border-color: var(--border);">
+        <span>LUMI ATELIER — Бьюти-салон (Editorial)</span><span class="text-[#FF5500]">→</span>
       </a>
-      <a href="./repair/" class="flex items-center justify-between rounded-xl border border-[#26262C] bg-[#0E0E10] px-4 py-3.5 hover:border-[#FF5500]">
-        <span>Ремонт техники «FIXLAB»</span><span class="text-[#FF5500]">→</span>
+      <a href="./repair/" class="flex items-center justify-between rounded-xl border px-4 py-3.5 hover:border-[#FF5500]" style="background: var(--bg); border-color: var(--border);">
+        <span>FIX_LAB — Ремонт техники (Bento UI)</span><span class="text-[#FF5500]">→</span>
       </a>
-      <a href="./fitness/" class="flex items-center justify-between rounded-xl border border-[#26262C] bg-[#0E0E10] px-4 py-3.5 hover:border-[#FF5500]">
-        <span>Фитнес-клуб «IRONBASE»</span><span class="text-[#FF5500]">→</span>
+      <a href="./fitness/" class="flex items-center justify-between rounded-xl border px-4 py-3.5 hover:border-[#FF5500]" style="background: var(--bg); border-color: var(--border);">
+        <span>IRONBASE — Фитнес-клуб (Athletic Grid)</span><span class="text-[#FF5500]">→</span>
       </a>
     </div>
   </div>

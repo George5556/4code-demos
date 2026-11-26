@@ -3,199 +3,246 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LUMI — Студия красоты в центре · Стрижки, окрашивание, маникюр</title>
+  <title>LUMI ATELIER — Студия красоты · Editorial &amp; Rituals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('lumi-theme') || 'system';
+      const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const resolved = saved === 'system' ? (sysDark ? 'dark' : 'light') : saved;
+      document.documentElement.dataset.theme = resolved;
+      document.documentElement.dataset.themeMode = saved;
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bg: '#100E0F',
-            surface: '#181416',
-            border: '#2B2326',
-            accent: '#E29578',
-            'accent-hover': '#D17F60',
-            muted: '#A69C9E',
+            bg: 'rgb(var(--c-bg) / <alpha-value>)',
+            surface: 'rgb(var(--c-surface) / <alpha-value>)',
+            border: 'rgb(var(--c-border) / <alpha-value>)',
+            ink: 'rgb(var(--c-ink) / <alpha-value>)',
+            muted: 'rgb(var(--c-muted) / <alpha-value>)',
+            accent: 'rgb(var(--c-accent) / <alpha-value>)',
+            'accent-ink': 'rgb(var(--c-accent-ink) / <alpha-value>)',
           },
-          fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          },
         },
       },
     };
   </script>
+
   <style>
+    :root {
+      --c-bg: 250 247 244;
+      --c-surface: 255 255 255;
+      --c-border: 229 220 214;
+      --c-ink: 26 21 22;
+      --c-muted: 112 100 103;
+      --c-accent: 186 104 74;
+      --c-accent-ink: 255 255 255;
+    }
+
+    [data-theme="dark"] {
+      --c-bg: 15 12 13;
+      --c-surface: 24 20 22;
+      --c-border: 46 37 40;
+      --c-ink: 247 243 240;
+      --c-muted: 165 153 156;
+      --c-accent: 226 149 120;
+      --c-accent-ink: 18 13 14;
+    }
+
     body {
-      background-color: #100E0F;
-      color: #FFFFFF;
-      font-family: 'Manrope', sans-serif;
+      background-color: rgb(var(--c-bg));
+      color: rgb(var(--c-ink));
+      transition: background-color 0.28s ease, color 0.28s ease;
     }
-    .bg-pinstripe {
-      background-image: repeating-linear-gradient(
-        -45deg,
-        rgba(255, 255, 255, 0.018) 0px,
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px,
-        transparent 14px
-      );
-    }
-    .ymap-dark {
+
+    [data-theme="dark"] .ymap-frame {
       filter: invert(92%) hue-rotate(180deg) brightness(94%) contrast(92%);
     }
   </style>
 </head>
-<body class="bg-bg bg-pinstripe text-white antialiased selection:bg-accent selection:text-bg">
+<body class="bg-bg text-ink antialiased selection:bg-accent selection:text-accent-ink">
 
-  <!-- Шапка -->
+  <!-- Editorial Header с логотипом по центру -->
   <header class="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-md">
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-      <a href="#" class="inline-flex items-center gap-2.5 text-lg font-extrabold tracking-tight">
-        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-black text-bg shadow-lg shadow-accent/25">L</span>
-        <span>LUMI <span class="font-semibold text-accent">BEAUTY</span></span>
-      </a>
-
-      <div class="hidden lg:inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1 text-xs text-muted">
-        <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-        <span>Открыто <span class="text-emerald-400 font-medium">· до 22:00</span></span>
-      </div>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm text-muted">
-        <a href="#services" class="hover:text-white transition-colors">Услуги и цены</a>
-        <a href="#masters" class="hover:text-white transition-colors">Мастера</a>
-        <a href="#reviews" class="hover:text-white transition-colors">Отзывы</a>
-        <a href="#map" class="hover:text-white transition-colors">Карта</a>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+        <a href="#services" class="hover:text-ink transition-colors">Меню услуг</a>
+        <a href="#masters" class="hover:text-ink transition-colors">Мастера</a>
+        <a href="#reviews" class="hover:text-ink transition-colors">Отзывы</a>
+        <a href="#map" class="hover:text-ink transition-colors">Салоны</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="tel:+78126421890" class="hidden sm:inline-block text-sm font-semibold text-white hover:text-accent transition-colors">
-          +7 (812) 642-18-90
-        </a>
-        <button type="button" class="open-booking-modal rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg transition-colors hover:bg-accent-hover sm:text-sm">
-          Записаться
+      <a href="#" class="font-serif text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+        Lumi <span class="italic font-semibold text-accent">Atelier</span>
+      </a>
+
+      <div class="flex items-center gap-2.5">
+        <!-- Переключатель темы: Авто / Светлая / Тёмная -->
+        <div class="inline-flex items-center rounded-full border border-border bg-surface p-0.5 text-[11px] font-semibold" role="group" aria-label="Выбор темы">
+          <button type="button" data-theme-set="system" class="theme-btn rounded-full px-2.5 py-1 transition-colors">Авто</button>
+          <button type="button" data-theme-set="light" class="theme-btn rounded-full px-2 py-1 transition-colors" aria-label="Светлая тема">☀</button>
+          <button type="button" data-theme-set="dark" class="theme-btn rounded-full px-2 py-1 transition-colors" aria-label="Тёмная тема">☾</button>
+        </div>
+
+        <button type="button" class="open-booking-modal hidden sm:inline-flex rounded-full bg-accent px-4 py-2 text-xs font-bold text-accent-ink transition-opacity hover:opacity-90">
+          Запись
         </button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="relative overflow-hidden border-b border-border py-14 sm:py-20 lg:py-24">
-      <!-- Реальное фото салона на фоне с тёмным градиентом -->
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <img src="salon-photo.jpg" alt="" class="h-full w-full object-cover object-center opacity-20" />
-        <div class="absolute inset-0 bg-gradient-to-r from-bg via-bg/90 to-bg/65"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/85"></div>
-      </div>
+    <!-- Editorial Split Hero с арочным портретом -->
+    <section class="border-b border-border py-12 sm:py-16 lg:py-20">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            <span>Петроградская · Центр</span>
+            <span>·</span>
+            <span>10:00–22:00</span>
+          </div>
 
-      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-7">
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">
-            СТУДИЯ КРАСОТЫ · ПЕТРОГРАДСКАЯ И ЦЕНТР
-          </p>
-          <h1 class="mt-4 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[54px]">
-            Эстетика ухода с <span class="text-accent">бережным</span> отношением
+          <h1 class="mt-5 font-serif text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-[68px]">
+            Уход как <span class="italic text-accent">тихий</span> ритуал красоты
           </h1>
-          <p class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Стрижки, сложное окрашивание, маникюр и архитектура бровей без суеты и навязанных допов. Два уютных филиала в центре, стерилизация по СанПиН и запись за 1 минуту.
+
+          <p class="mt-6 max-w-md text-base leading-relaxed text-muted">
+            Авторские стрижки, сложное окрашивание без повреждения структуры, смарт-педикюр и деликатная архитектура бровей.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
-            <button type="button" class="open-booking-modal rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover">
-              Записаться за 1 минуту
-            </button>
-            <a href="#services" class="rounded-xl border border-border bg-surface/90 backdrop-blur px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-accent">
-              Услуги и калькулятор
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#services" class="rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-accent-ink transition-opacity hover:opacity-90">
+              Собрать визит
+            </a>
+            <a href="tel:+78126421890" class="rounded-full border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-ink hover:border-accent transition-colors">
+              +7 (812) 642-18-90
             </a>
           </div>
 
-          <div class="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6 max-w-lg text-xs sm:text-sm">
+          <div class="mt-10 flex items-center gap-8 border-t border-border pt-6 text-xs">
             <div>
-              <p class="text-muted">Режим</p>
-              <p class="mt-1 font-bold text-white">Ежедневно 10–22</p>
+              <p class="text-2xl font-serif font-bold text-ink">4.9 ★</p>
+              <p class="text-muted">Яндекс Карты · 184 отзыва</p>
             </div>
+            <div class="h-8 w-px bg-border"></div>
             <div>
-              <p class="text-muted">Рейтинг</p>
-              <p class="mt-1 font-bold text-white">4.9 на Яндекс Картах</p>
-            </div>
-            <div>
-              <p class="text-muted">Отзывов</p>
-              <p class="mt-1 font-bold text-white">184 реальных</p>
+              <p class="text-2xl font-serif font-bold text-ink">100%</p>
+              <p class="text-muted">Стерильность по СанПиН</p>
             </div>
           </div>
         </div>
 
-        <!-- Правая карточка с реальным фото салона -->
-        <div class="lg:col-span-5">
-          <div class="relative overflow-hidden rounded-2xl border border-border bg-surface p-2 shadow-2xl">
-            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
-              <img
-                src="salon-photo.jpg"
-                alt="Интерьер студии красоты LUMI"
-                class="h-full w-full object-cover object-center"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-bg/85 via-transparent to-transparent"></div>
-              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 rounded-xl border border-border bg-bg/90 px-4 py-2.5 backdrop-blur-md">
-                <div>
-                  <p class="text-[11px] text-muted">Ближайшее окно сегодня</p>
-                  <p class="text-xs font-bold text-white">Мастер Алина · Маникюр / Уход</p>
-                </div>
-                <span class="rounded-lg bg-accent px-2.5 py-1 text-xs font-extrabold text-bg">14:30</span>
+        <!-- Правая арочная композиция (отличная от других демок) -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-md">
+            <div class="overflow-hidden rounded-t-[180px] rounded-b-2xl border border-border bg-surface p-2.5 shadow-xl">
+              <div class="aspect-[4/4.3] overflow-hidden rounded-t-[170px] rounded-b-xl">
+                <img src="salon-photo.jpg" alt="Интерьер студии LUMI Atelier" class="h-full w-full object-cover object-center" />
               </div>
+            </div>
+            <div class="absolute -bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl border border-border bg-surface/95 px-5 py-3.5 shadow-lg backdrop-blur">
+              <div>
+                <p class="text-[11px] uppercase tracking-wider text-muted">Ближайшее окно</p>
+                <p class="text-sm font-bold text-ink">Мастер Алина · Маникюр</p>
+              </div>
+              <button type="button" class="open-booking-modal rounded-full bg-accent px-4 py-2 text-xs font-bold text-accent-ink">
+                Сегодня 14:30
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Интерактивный калькулятор визита -->
+    <!-- Стандарты в 3 колонки с hairline границами -->
+    <section class="border-b border-border bg-surface/50">
+      <div class="mx-auto grid max-w-6xl divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+        <div class="p-7 sm:p-8">
+          <span class="font-serif text-3xl font-bold text-accent">01</span>
+          <h2 class="mt-3 text-base font-bold">Честная стоимость сразу</h2>
+          <p class="mt-1.5 text-sm text-muted">Фиксируем цену до начала процедуры — никаких неожиданных доплат на кассе.</p>
+        </div>
+        <div class="p-7 sm:p-8">
+          <span class="font-serif text-3xl font-bold text-accent">02</span>
+          <h2 class="mt-3 text-base font-bold">Сухожар и крафт-пакеты</h2>
+          <p class="mt-1.5 text-sm text-muted">3-этапная стерилизация инструментов, вскрытие крафт-пакета строго при вас.</p>
+        </div>
+        <div class="p-7 sm:p-8">
+          <span class="font-serif text-3xl font-bold text-accent">03</span>
+          <h2 class="mt-3 text-base font-bold">Гарантия на покрытие 7 дней</h2>
+          <p class="mt-1.5 text-sm text-muted">Бесплатно переделаем ноготь или подкорректируем укладку при любом нюансе.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Меню услуг в формате салонного чек-листа (мульти-выбор!) -->
     <section id="services" class="border-b border-border py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap items-end justify-between gap-4">
+        <div class="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
           <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-accent">Прайс и запись</p>
-            <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-4xl">Соберите свой визит</h2>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">Меню процедур</p>
+            <h2 class="mt-2 font-serif text-3xl font-bold sm:text-4xl">Соберите свой комплекс</h2>
           </div>
-          <div class="inline-flex rounded-xl border border-border bg-surface p-1 text-xs font-semibold" id="tier-toggle">
-            <button type="button" data-tier="1" class="tier-btn rounded-lg bg-accent px-3.5 py-2 text-bg">Мастер</button>
-            <button type="button" data-tier="1.25" class="tier-btn rounded-lg px-3.5 py-2 text-muted hover:text-white">Топ-стилист (+25%)</button>
+          <div class="inline-flex rounded-full border border-border bg-surface p-1 text-xs font-semibold">
+            <button type="button" data-tier="1" class="tier-btn rounded-full bg-accent px-4 py-1.5 text-accent-ink">Мастер</button>
+            <button type="button" data-tier="1.25" class="tier-btn rounded-full px-4 py-1.5 text-muted hover:text-ink">Топ-стилист +25%</button>
           </div>
         </div>
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-12">
-          <div class="lg:col-span-7 space-y-4">
-            <div class="flex flex-wrap gap-2" id="cat-tabs">
-              <button type="button" data-cat="nails" class="cat-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg">Ногтевой сервис</button>
-              <button type="button" data-cat="hair" class="cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">Волосы и окрашивание</button>
-              <button type="button" data-cat="face" class="cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white">Брови и уход</button>
+        <div class="mt-8 grid gap-8 lg:grid-cols-12">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex flex-wrap gap-2">
+              <button type="button" data-cat="nails" class="cat-btn rounded-full bg-accent px-4 py-2 text-xs font-bold text-accent-ink">Ногти</button>
+              <button type="button" data-cat="hair" class="cat-btn rounded-full border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-ink">Волосы</button>
+              <button type="button" data-cat="face" class="cat-btn rounded-full border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-ink">Брови &amp; Лицо</button>
             </div>
-            <div id="service-list" class="space-y-2.5"></div>
+            <div id="service-menu" class="divide-y divide-border rounded-2xl border border-border bg-surface"></div>
           </div>
 
+          <!-- Чек визита справа -->
           <div class="lg:col-span-5">
-            <div class="rounded-2xl border border-border bg-surface p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-muted">1. Выберите время на сегодня</p>
-              <div class="mt-3 grid grid-cols-4 gap-2" id="time-slots">
-                <button type="button" class="slot-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent">12:00</button>
-                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">14:30</button>
-                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">17:00</button>
-                <button type="button" class="slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white">19:30</button>
+            <div class="sticky top-24 rounded-2xl border border-border bg-surface p-6">
+              <div class="flex items-center justify-between border-b border-border pb-4">
+                <h3 class="font-serif text-2xl font-bold">Ваш визит</h3>
+                <span class="text-xs text-muted" id="visit-dur">90 мин</span>
               </div>
 
-              <div class="mt-6 border-t border-border pt-4">
-                <p class="text-xs text-muted">Выбранная процедура:</p>
-                <p id="selected-service-name" class="mt-1 text-base font-bold text-white">Маникюр + покрытие гель-лак</p>
-                <div class="mt-3 flex items-center justify-between text-sm">
-                  <span class="text-muted">Слот: <strong id="selected-time" class="text-white">12:00</strong> · <span id="selected-dur">90 мин</span></span>
-                  <span id="selected-price" class="text-2xl font-extrabold text-accent tabular-nums">2 400 ₽</span>
+              <div id="selected-summary" class="mt-4 space-y-2 text-sm"></div>
+
+              <div class="mt-5 border-t border-border pt-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-muted">Время записи</p>
+                <div class="mt-2.5 grid grid-cols-4 gap-2">
+                  <button type="button" class="slot-btn rounded-full border border-accent bg-accent/15 py-1.5 text-xs font-bold text-accent">12:00</button>
+                  <button type="button" class="slot-btn rounded-full border border-border bg-bg py-1.5 text-xs font-semibold text-muted hover:text-ink">14:30</button>
+                  <button type="button" class="slot-btn rounded-full border border-border bg-bg py-1.5 text-xs font-semibold text-muted hover:text-ink">17:00</button>
+                  <button type="button" class="slot-btn rounded-full border border-border bg-bg py-1.5 text-xs font-semibold text-muted hover:text-ink">19:30</button>
                 </div>
               </div>
 
-              <button id="book-btn" type="button" class="mt-5 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-bg transition-colors hover:bg-accent-hover">
-                Подтвердить запись
+              <div class="mt-6 flex items-baseline justify-between border-t border-border pt-4">
+                <span class="text-xs uppercase tracking-wider text-muted">Итого (<span id="visit-time">12:00</span>)</span>
+                <span id="visit-total" class="font-serif text-3xl font-bold text-accent tabular-nums">2 400 ₽</span>
+              </div>
+
+              <button id="book-btn" type="button" class="mt-5 w-full rounded-full bg-accent py-3.5 text-sm font-bold text-accent-ink hover:opacity-90 transition-opacity">
+                Записаться на визит
               </button>
-              <p id="book-msg" class="mt-3 hidden text-center text-xs font-semibold text-emerald-400">
-                ✓ Запись подтверждена в демо-режиме. Ждём вас в студии!
+              <p id="book-msg" class="mt-3 hidden text-center text-xs font-semibold text-accent">
+                ✓ Запись оформлена (демо-режим). Ждём вас в LUMI!
               </p>
             </div>
           </div>
@@ -206,127 +253,71 @@
     <!-- Мастера -->
     <section id="masters" class="border-b border-border py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-accent">Специалисты</p>
-        <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Наши мастера</h2>
-
-        <div class="mt-8 grid gap-5 sm:grid-cols-3">
-          <article class="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6">
-            <div>
-              <div class="flex items-center justify-between">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">АВ</div>
-                <span class="text-xs font-bold text-accent">4.98 ★</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold">Алина Волкова</h3>
-              <p class="text-xs text-accent">Топ-мастер маникюра · 6 лет опыта</p>
-              <p class="mt-3 text-sm text-muted">Идеальный блик, тонкое укрепление гелем и сложный френч без отслоек до 4 недель.</p>
+        <h2 class="font-serif text-3xl font-bold sm:text-4xl">Команда мастеров</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          <article class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex items-center justify-between">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-bold text-accent">АВ</span>
+              <span class="text-xs font-bold text-accent">4.98 ★</span>
             </div>
-            <div class="mt-5 flex items-center justify-between border-t border-border pt-4 text-xs">
-              <span class="text-muted">Окно: <strong class="text-white">Сегодня 14:30</strong></span>
-              <button type="button" class="open-booking-modal font-bold text-accent hover:underline">Записаться →</button>
-            </div>
+            <h3 class="mt-4 text-lg font-bold">Алина Волкова</h3>
+            <p class="text-xs text-muted">Топ-мастер маникюра · 6 лет</p>
+            <p class="mt-3 text-sm text-muted">Тонкое укрепление гелем, идеальный блик и стойкость без отслоек до 4 недель.</p>
           </article>
-
-          <article class="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6">
-            <div>
-              <div class="flex items-center justify-between">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">МС</div>
-                <span class="text-xs font-bold text-accent">4.95 ★</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold">Мария Соколова</h3>
-              <p class="text-xs text-accent">Стилист-колорист · 8 лет опыта</p>
-              <p class="mt-3 text-sm text-muted">Airtouch, мягкий выход из тёмного и стрижки, которые держат форму без долгой укладки.</p>
+          <article class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex items-center justify-between">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-bold text-accent">МС</span>
+              <span class="text-xs font-bold text-accent">4.95 ★</span>
             </div>
-            <div class="mt-5 flex items-center justify-between border-t border-border pt-4 text-xs">
-              <span class="text-muted">Окно: <strong class="text-white">Завтра 11:00</strong></span>
-              <button type="button" class="open-booking-modal font-bold text-accent hover:underline">Записаться →</button>
-            </div>
+            <h3 class="mt-4 text-lg font-bold">Мария Соколова</h3>
+            <p class="text-xs text-muted">Стилист-колорист · 8 лет</p>
+            <p class="mt-3 text-sm text-muted">Airtouch, мягкое тонирование и стрижки, которые отрастают красиво и держат форму.</p>
           </article>
-
-          <article class="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6">
-            <div>
-              <div class="flex items-center justify-between">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-lg font-extrabold text-accent">КО</div>
-                <span class="text-xs font-bold text-accent">4.97 ★</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold">Ксения Орлова</h3>
-              <p class="text-xs text-accent">Бровист-визажист · 5 лет опыта</p>
-              <p class="mt-3 text-sm text-muted">Естественная архитектура бровей без перетемнения, бережное ламинирование и макияж.</p>
+          <article class="rounded-2xl border border-border bg-surface p-6">
+            <div class="flex items-center justify-between">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-bold text-accent">КО</span>
+              <span class="text-xs font-bold text-accent">4.97 ★</span>
             </div>
-            <div class="mt-5 flex items-center justify-between border-t border-border pt-4 text-xs">
-              <span class="text-muted">Окно: <strong class="text-white">Сегодня 17:00</strong></span>
-              <button type="button" class="open-booking-modal font-bold text-accent hover:underline">Записаться →</button>
-            </div>
+            <h3 class="mt-4 text-lg font-bold">Ксения Орлова</h3>
+            <p class="text-xs text-muted">Бровист-визажист · 5 лет</p>
+            <p class="mt-3 text-sm text-muted">Натуральная архитектура бровей, бережное ламинирование и дневной макияж.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Отзывы с Яндекс Карт -->
+    <!-- Отзывы Яндекс Карт -->
     <section id="reviews" class="border-b border-border py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-accent">Отзывы клиентов</p>
-            <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Рейтинг на Яндекс Картах</h2>
-          </div>
-          <div class="inline-flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm">
-            <span class="text-xl font-extrabold text-accent">4.9 ★</span>
-            <span class="text-xs text-muted">184 оценки · Яндекс Карты</span>
-          </div>
+          <h2 class="font-serif text-3xl font-bold sm:text-4xl">Отзывы на Яндекс Картах</h2>
+          <span class="rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-semibold">4.9 ★ · 184 оценки</span>
         </div>
-
-        <div id="reviews-grid" class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
-        <div class="mt-6 text-center">
-          <button id="more-reviews-btn" type="button" class="rounded-xl border border-border bg-surface px-6 py-2.5 text-xs font-semibold text-white hover:border-accent">
-            Показать ещё отзывы (3)
-          </button>
-        </div>
+        <div id="reviews-grid" class="mt-8 grid gap-5 md:grid-cols-3"></div>
       </div>
     </section>
 
-    <!-- Карта и филиалы -->
+    <!-- Карта -->
     <section id="map" class="border-b border-border py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-accent">Локации</p>
-        <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Как нас найти на карте</h2>
-
+        <h2 class="font-serif text-3xl font-bold sm:text-4xl">Наши филиалы</h2>
         <div class="mt-8 grid gap-6 lg:grid-cols-12">
-          <div class="lg:col-span-4 space-y-3" id="branch-list">
-            <button type="button" data-ll="30.3095,59.9612" data-addr="Большой пр. П.С., 42 · м. Петроградская (3 мин)" data-link="https://yandex.ru/maps/?pt=30.3095,59.9612&z=16" class="branch-btn w-full rounded-2xl border border-accent bg-surface p-5 text-left">
-              <div class="flex items-center justify-between">
-                <span class="text-sm font-bold text-white">Филиал Петроградская</span>
-                <span class="text-[11px] font-semibold text-accent">Выбран</span>
-              </div>
-              <p class="mt-1.5 text-xs text-muted">Большой пр. П.С., 42 · 3 мин от метро</p>
-              <p class="mt-2 text-xs text-white">Ежедневно 10:00–22:00</p>
+          <div class="lg:col-span-4 space-y-3">
+            <button type="button" data-ll="30.3095,59.9612" data-addr="Большой пр. П.С., 42 · м. Петроградская" data-link="https://yandex.ru/maps/?pt=30.3095,59.9612&z=16" class="branch-btn w-full rounded-2xl border border-accent bg-surface p-5 text-left">
+              <p class="text-sm font-bold">Петроградская</p>
+              <p class="mt-1 text-xs text-muted">Большой пр. П.С., 42 · 3 мин от метро</p>
             </button>
-
-            <button type="button" data-ll="30.3249,59.9369" data-addr="ул. Большая Конюшенная, 18 · м. Невский проспект (4 мин)" data-link="https://yandex.ru/maps/?pt=30.3249,59.9369&z=16" class="branch-btn w-full rounded-2xl border border-border bg-surface/60 p-5 text-left hover:border-muted">
-              <div class="flex items-center justify-between">
-                <span class="text-sm font-bold text-white">Филиал Центр</span>
-                <span class="text-[11px] text-muted">4 мин от метро</span>
-              </div>
-              <p class="mt-1.5 text-xs text-muted">ул. Большая Конюшенная, 18</p>
-              <p class="mt-2 text-xs text-white">Ежедневно 10:00–22:00</p>
+            <button type="button" data-ll="30.3249,59.9369" data-addr="ул. Большая Конюшенная, 18 · Центр" data-link="https://yandex.ru/maps/?pt=30.3249,59.9369&z=16" class="branch-btn w-full rounded-2xl border border-border bg-surface p-5 text-left hover:border-muted">
+              <p class="text-sm font-bold">Центр</p>
+              <p class="mt-1 text-xs text-muted">ул. Большая Конюшенная, 18 · 4 мин от метро</p>
             </button>
-
-            <a id="ymap-ext-link" href="https://yandex.ru/maps/?pt=30.3095,59.9612&z=16" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-bg py-3 text-xs font-semibold text-white hover:border-accent">
-              Открыть маршрут в Яндекс Картах ↗
+            <a id="ymap-ext-link" href="https://yandex.ru/maps/?pt=30.3095,59.9612&z=16" target="_blank" rel="noopener noreferrer" class="block rounded-full border border-border bg-surface py-3 text-center text-xs font-semibold hover:border-accent">
+              Открыть в Яндекс Картах ↗
             </a>
           </div>
-
           <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-border bg-surface">
-            <div class="flex items-center justify-between border-b border-border px-4 py-2.5 text-xs text-muted">
-              <span id="map-addr-label" class="text-white font-medium">Большой пр. П.С., 42 · м. Петроградская (3 мин)</span>
-              <span>Яндекс Карты</span>
-            </div>
-            <iframe
-              id="ymap-frame"
-              title="Карта студии LUMI"
-              src="https://yandex.ru/map-widget/v1/?ll=30.3095%2C59.9612&z=16&pt=30.3095,59.9612,pm2rdm"
-              class="ymap-dark h-[320px] w-full border-0 sm:h-[360px]"
-              loading="lazy"
-            ></iframe>
+            <div class="border-b border-border px-4 py-2.5 text-xs font-medium" id="map-addr-label">Большой пр. П.С., 42 · м. Петроградская</div>
+            <iframe id="ymap-frame" title="Карта LUMI Atelier" src="https://yandex.ru/map-widget/v1/?ll=30.3095%2C59.9612&z=16&pt=30.3095,59.9612,pm2rdm" class="ymap-frame h-[320px] w-full border-0" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -334,202 +325,193 @@
   </main>
 
   <footer class="py-10 text-xs text-muted">
-    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-      <div>
-        <p class="text-sm font-bold text-white">LUMI BEAUTY STUDIO</p>
-        <p class="mt-1">Санкт-Петербург · Большой пр. П.С., 42 и Большая Конюшенная, 18</p>
-      </div>
-      <p>Демо-сайт создан в студии <span class="font-bold text-white">4CODE</span></p>
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <p class="font-serif text-lg font-bold text-ink">Lumi <span class="italic text-accent">Atelier</span></p>
+      <p>Демо-сайт студии <strong class="text-ink">4CODE</strong> · Светлая и тёмная темы по системе</p>
     </div>
   </footer>
 
-  <!-- Модальное окно быстрой записи -->
-  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
+  <!-- Модалка записи -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
     <div class="w-full max-w-md rounded-2xl border border-border bg-surface p-6">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold">Быстрая запись в LUMI</h3>
-        <button id="close-modal" type="button" class="text-muted hover:text-white">✕</button>
+        <h3 class="font-serif text-2xl font-bold">Быстрая запись</h3>
+        <button id="close-modal" type="button" class="text-muted hover:text-ink">✕</button>
       </div>
-      <p class="mt-2 text-xs text-muted">Оставьте имя и контакт — администратор подтвердит окно в течение 5 минут.</p>
       <div class="mt-4 space-y-3">
-        <input id="m-name" type="text" placeholder="Ваше имя" class="w-full rounded-lg border border-border bg-bg px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none" />
-        <input id="m-phone" type="text" placeholder="Телефон или @telegram" class="w-full rounded-lg border border-border bg-bg px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none" />
-        <button id="m-submit" type="button" class="w-full rounded-xl bg-accent py-3 text-sm font-bold text-bg hover:bg-accent-hover">Отправить заявку</button>
-        <p id="m-done" class="hidden text-center text-xs font-semibold text-emerald-400">✓ Заявка отправлена (демо-режим)!</p>
+        <input type="text" placeholder="Ваше имя" class="w-full rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-ink focus:border-accent focus:outline-none" />
+        <input type="text" placeholder="Телефон или @telegram" class="w-full rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-ink focus:border-accent focus:outline-none" />
+        <button id="m-submit" type="button" class="w-full rounded-full bg-accent py-3 text-sm font-bold text-accent-ink">Отправить заявку</button>
+        <p id="m-done" class="hidden text-center text-xs font-semibold text-accent">✓ Заявка отправлена (демо-режим)!</p>
       </div>
     </div>
   </div>
 
   <script>
-    const DATA = {
+    // Тема: Светлая / Тёмная / Авто (системная)
+    const sysMQ = window.matchMedia('(prefers-color-scheme: dark)');
+    function applyThemeMode(mode) {
+      localStorage.setItem('lumi-theme', mode);
+      const resolved = mode === 'system' ? (sysMQ.matches ? 'dark' : 'light') : mode;
+      document.documentElement.dataset.theme = resolved;
+      document.documentElement.dataset.themeMode = mode;
+      document.documentElement.style.colorScheme = resolved;
+      document.querySelectorAll('.theme-btn').forEach((btn) => {
+        const active = btn.dataset.themeSet === mode;
+        btn.classList.toggle('bg-accent', active);
+        btn.classList.toggle('text-accent-ink', active);
+        btn.classList.toggle('text-muted', !active);
+      });
+    }
+    sysMQ.addEventListener('change', () => {
+      if ((localStorage.getItem('lumi-theme') || 'system') === 'system') applyThemeMode('system');
+    });
+    document.querySelectorAll('.theme-btn').forEach((btn) => {
+      btn.addEventListener('click', () => applyThemeMode(btn.dataset.themeSet));
+    });
+    applyThemeMode(localStorage.getItem('lumi-theme') || 'system');
+
+    // Меню услуг с мульти-выбором
+    const MENU = {
       nails: [
-        { name: 'Маникюр + покрытие гель-лак', dur: '90 мин', price: 2400 },
-        { name: 'Смарт-педикюр с покрытием', dur: '90 мин', price: 3100 },
-        { name: 'Японский эко-маникюр', dur: '60 мин', price: 1900 },
+        { id: 'n1', name: 'Маникюр + покрытие гель-лак', dur: 90, price: 2400 },
+        { id: 'n2', name: 'Смарт-педикюр с покрытием', dur: 90, price: 3100 },
+        { id: 'n3', name: 'Снятие + укрепление базой', dur: 45, price: 1400 },
       ],
       hair: [
-        { name: 'Женская стрижка + укладка', dur: '60 мин', price: 2900 },
-        { name: 'Сложное окрашивание Airtouch', dur: '240 мин', price: 8500 },
-        { name: 'Уход для волос и полировка', dur: '60 мин', price: 3200 },
+        { id: 'h1', name: 'Женская стрижка и укладка', dur: 60, price: 2900 },
+        { id: 'h2', name: 'Сложное окрашивание Airtouch', dur: 210, price: 8500 },
+        { id: 'h3', name: 'Восстанавливающий уход', dur: 45, price: 2600 },
       ],
       face: [
-        { name: 'Архитектура + окрашивание бровей', dur: '45 мин', price: 1600 },
-        { name: 'Ламинирование ресниц + ботокс', dur: '60 мин', price: 2300 },
-        { name: 'Атравматичная чистка лица', dur: '75 мин', price: 3400 },
+        { id: 'f1', name: 'Архитектура + окрашивание бровей', dur: 45, price: 1600 },
+        { id: 'f2', name: 'Ламинирование ресниц + ботокс', dur: 60, price: 2300 },
+        { id: 'f3', name: 'Уходовая чистка лица', dur: 75, price: 3400 },
       ],
     };
 
-    let currentCat = 'nails';
-    let currentTier = 1;
-    let selectedIndex = 0;
+    let cat = 'nails';
+    let tier = 1;
+    const picked = new Set(['n1']);
 
-    const listEl = document.getElementById('service-list');
-    const nameEl = document.getElementById('selected-service-name');
-    const durEl = document.getElementById('selected-dur');
-    const priceEl = document.getElementById('selected-price');
-    const timeEl = document.getElementById('selected-time');
-    const bookMsg = document.getElementById('book-msg');
+    function allItems() {
+      return [...MENU.nails, ...MENU.hair, ...MENU.face];
+    }
 
-    function renderServices() {
-      const items = DATA[currentCat];
-      listEl.innerHTML = '';
-      items.forEach((item, idx) => {
-        const finalPrice = Math.round(item.price * currentTier);
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `w-full flex items-center justify-between rounded-xl border px-4 py-3.5 text-left transition-colors ${
-          idx === selectedIndex ? 'border-accent bg-surface' : 'border-border bg-surface/60 hover:border-muted'
-        }`;
-        btn.innerHTML = `<div><p class="text-sm font-bold text-white">${item.name}</p><p class="text-xs text-muted">${item.dur}</p></div><span class="text-sm font-extrabold text-accent tabular-nums">${finalPrice.toLocaleString('ru-RU')} ₽</span>`;
-        btn.addEventListener('click', () => {
-          selectedIndex = idx;
-          renderServices();
-          bookMsg.classList.add('hidden');
+    function renderMenu() {
+      const menuEl = document.getElementById('service-menu');
+      menuEl.innerHTML = MENU[cat]
+        .map((item) => {
+          const on = picked.has(item.id);
+          const price = Math.round(item.price * tier);
+          return `
+            <button type="button" data-id="${item.id}" class="menu-row flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-bg/50">
+              <div class="flex items-center gap-3">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full border text-[11px] font-bold ${on ? 'border-accent bg-accent text-accent-ink' : 'border-border text-transparent'}">✓</span>
+                <div>
+                  <p class="text-sm font-bold">${item.name}</p>
+                  <p class="text-xs text-muted">${item.dur} мин</p>
+                </div>
+              </div>
+              <span class="text-sm font-extrabold text-accent tabular-nums">${price.toLocaleString('ru-RU')} ₽</span>
+            </button>`;
+        })
+        .join('');
+
+      menuEl.querySelectorAll('.menu-row').forEach((row) => {
+        row.addEventListener('click', () => {
+          const id = row.dataset.id;
+          if (picked.has(id) && picked.size > 1) picked.delete(id);
+          else picked.add(id);
+          renderMenu();
+          renderSummary();
         });
-        listEl.appendChild(btn);
       });
-      const chosen = items[selectedIndex];
-      nameEl.textContent = chosen.name;
-      durEl.textContent = chosen.dur;
-      priceEl.textContent = `${Math.round(chosen.price * currentTier).toLocaleString('ru-RU')} ₽`;
+    }
+
+    function renderSummary() {
+      const chosen = allItems().filter((i) => picked.has(i.id));
+      let total = 0;
+      let dur = 0;
+      document.getElementById('selected-summary').innerHTML = chosen
+        .map((i) => {
+          const p = Math.round(i.price * tier);
+          total += p;
+          dur += i.dur;
+          return `<div class="flex justify-between gap-2"><span class="text-muted">${i.name}</span><span class="font-semibold tabular-nums">${p.toLocaleString('ru-RU')} ₽</span></div>`;
+        })
+        .join('');
+      document.getElementById('visit-dur').textContent = `${dur} мин`;
+      document.getElementById('visit-total').textContent = `${total.toLocaleString('ru-RU')} ₽`;
     }
 
     document.querySelectorAll('.cat-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.cat-btn').forEach((b) => {
-          b.className = 'cat-btn rounded-lg border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-white';
+          b.className = 'cat-btn rounded-full border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted hover:text-ink';
         });
-        btn.className = 'cat-btn rounded-lg bg-accent px-4 py-2 text-xs font-bold text-bg';
-        currentCat = btn.dataset.cat;
-        selectedIndex = 0;
-        renderServices();
+        btn.className = 'cat-btn rounded-full bg-accent px-4 py-2 text-xs font-bold text-accent-ink';
+        cat = btn.dataset.cat;
+        renderMenu();
       });
     });
 
     document.querySelectorAll('.tier-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tier-btn').forEach((b) => {
-          b.className = 'tier-btn rounded-lg px-3.5 py-2 text-muted hover:text-white';
+          b.className = 'tier-btn rounded-full px-4 py-1.5 text-muted hover:text-ink';
         });
-        btn.className = 'tier-btn rounded-lg bg-accent px-3.5 py-2 text-bg';
-        currentTier = Number(btn.dataset.tier);
-        renderServices();
+        btn.className = 'tier-btn rounded-full bg-accent px-4 py-1.5 text-accent-ink';
+        tier = Number(btn.dataset.tier);
+        renderMenu();
+        renderSummary();
       });
     });
 
     document.querySelectorAll('.slot-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.slot-btn').forEach((b) => {
-          b.className = 'slot-btn rounded-lg border border-border bg-bg py-2 text-xs font-semibold text-muted hover:text-white';
+          b.className = 'slot-btn rounded-full border border-border bg-bg py-1.5 text-xs font-semibold text-muted hover:text-ink';
         });
-        btn.className = 'slot-btn rounded-lg border border-accent bg-accent/15 py-2 text-xs font-bold text-accent';
-        timeEl.textContent = btn.textContent;
+        btn.className = 'slot-btn rounded-full border border-accent bg-accent/15 py-1.5 text-xs font-bold text-accent';
+        document.getElementById('visit-time').textContent = btn.textContent;
       });
     });
 
-    document.getElementById('book-btn').addEventListener('click', () => bookMsg.classList.remove('hidden'));
+    document.getElementById('book-btn').addEventListener('click', () => document.getElementById('book-msg').classList.remove('hidden'));
 
-    // Отзывы Яндекс Карт
     const REVIEWS = [
-      { name: 'Екатерина М.', date: '18 ноября', text: 'Хожу к Алине уже полгода — покрытие всегда тонкое и держится до коррекции без единого скола. Уютная студия и вкусный кофе.', reply: 'Екатерина, спасибо за доверие! Всегда рады видеть вас в LUMI.' },
-      { name: 'Анастасия К.', date: '12 ноября', text: 'Делала Airtouch у Марии. Впервые не пересушили волосы, переход очень мягкий и натуральный. Цена совпала с расчётом на сайте.', reply: 'Анастасия, благодарны за отзыв! Передадим тёплые слова Марии.' },
-      { name: 'Дарья С.', date: '4 ноября', text: 'Очень понравился формат записи онлайн без созвонов. Брови сделали ровно так, как просила — максимально естественно.', reply: 'Дарья, спасибо! Ждём вас снова.' },
-      { name: 'Ольга Т.', date: '29 октября', text: 'Чисто, стерильно, инструменты вскрывают при тебе. Удобно, что оба филиала рядом с метро.', reply: 'Ольга, безопасность и комфорт — наш главный приоритет!' },
-      { name: 'Ирина В.', date: '21 октября', text: 'Записывалась на комплекс маникюр + брови перед отпуском. Уложились ровно за 2 часа, мастера работают аккуратно.', reply: 'Ирина, отличного отдыха и ждём вас после отпуска!' },
-      { name: 'Марина Л.', date: '15 октября', text: 'Приятная атмосфера без лишнего пафоса. Делала японский маникюр — ногти заметно укрепились.', reply: 'Марина, рады что процедура понравилась!' },
+      { name: 'Екатерина М.', date: '18 ноября', text: 'Хожу к Алине уже полгода — идеальное тонкое покрытие и очень спокойная атмосфера без суеты.' },
+      { name: 'Анастасия К.', date: '12 ноября', text: 'Делала Airtouch у Марии. Впервые не пересушили волосы, итоговый чек совпал с расчётом.' },
+      { name: 'Дарья С.', date: '4 ноября', text: 'Очень удобно, что можно выбрать комплекс прямо на сайте и записаться в 2 клика.' },
     ];
-
-    let visibleReviews = 3;
-    const revGrid = document.getElementById('reviews-grid');
-    const moreRevBtn = document.getElementById('more-reviews-btn');
-
-    function renderReviews() {
-      revGrid.innerHTML = REVIEWS.slice(0, visibleReviews)
-        .map((r) => `
-          <div class="rounded-2xl border border-border bg-surface p-5 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between text-xs">
-                <span class="font-bold text-white">${r.name}</span>
-                <span class="text-muted">${r.date}</span>
-              </div>
-              <p class="mt-1 text-xs text-accent">★★★★★</p>
-              <p class="mt-3 text-sm leading-relaxed text-muted">${r.text}</p>
-            </div>
-            <div class="mt-4 rounded-xl border border-border bg-bg p-3 text-xs text-muted">
-              <span class="font-semibold text-white">Ответ студии:</span> ${r.reply}
-            </div>
-          </div>`)
-        .join('');
-      moreRevBtn.style.display = visibleReviews >= REVIEWS.length ? 'none' : 'inline-block';
-    }
-
-    moreRevBtn.addEventListener('click', () => {
-      visibleReviews = REVIEWS.length;
-      renderReviews();
-    });
-
-    // Переключение карты Яндекс Карт
-    const ymapFrame = document.getElementById('ymap-frame');
-    const mapAddrLabel = document.getElementById('map-addr-label');
-    const ymapExtLink = document.getElementById('ymap-ext-link');
+    document.getElementById('reviews-grid').innerHTML = REVIEWS.map((r) => `
+      <div class="rounded-2xl border border-border bg-surface p-6">
+        <div class="flex items-center justify-between text-xs"><span class="font-bold">${r.name}</span><span class="text-muted">${r.date}</span></div>
+        <p class="mt-1 text-xs text-accent">★★★★★</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted">${r.text}</p>
+      </div>`).join('');
 
     document.querySelectorAll('.branch-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.branch-btn').forEach((b) => {
-          b.className = 'branch-btn w-full rounded-2xl border border-border bg-surface/60 p-5 text-left hover:border-muted';
-          b.querySelector('span:last-child').textContent = 'Филиал';
-          b.querySelector('span:last-child').className = 'text-[11px] text-muted';
+          b.className = 'branch-btn w-full rounded-2xl border border-border bg-surface p-5 text-left hover:border-muted';
         });
         btn.className = 'branch-btn w-full rounded-2xl border border-accent bg-surface p-5 text-left';
-        btn.querySelector('span:last-child').textContent = 'Выбран';
-        btn.querySelector('span:last-child').className = 'text-[11px] font-semibold text-accent';
-
         const ll = btn.dataset.ll;
-        const encoded = encodeURIComponent(ll);
-        ymapFrame.src = `https://yandex.ru/map-widget/v1/?ll=${encoded}&z=16&pt=${ll},pm2rdm`;
-        mapAddrLabel.textContent = btn.dataset.addr;
-        ymapExtLink.href = btn.dataset.link;
+        document.getElementById('ymap-frame').src = `https://yandex.ru/map-widget/v1/?ll=${encodeURIComponent(ll)}&z=16&pt=${ll},pm2rdm`;
+        document.getElementById('map-addr-label').textContent = btn.dataset.addr;
+        document.getElementById('ymap-ext-link').href = btn.dataset.link;
       });
     });
 
-    // Модалка записи
     const modal = document.getElementById('booking-modal');
-    document.querySelectorAll('.open-booking-modal').forEach((b) => {
-      b.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      });
-    });
-    document.getElementById('close-modal').addEventListener('click', () => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    });
-    document.getElementById('m-submit').addEventListener('click', () => {
-      document.getElementById('m-done').classList.remove('hidden');
-    });
+    document.querySelectorAll('.open-booking-modal').forEach((b) => b.addEventListener('click', () => { modal.classList.remove('hidden'); modal.classList.add('flex'); }));
+    document.getElementById('close-modal').addEventListener('click', () => { modal.classList.add('hidden'); modal.classList.remove('flex'); });
+    document.getElementById('m-submit').addEventListener('click', () => document.getElementById('m-done').classList.remove('hidden'));
 
-    renderServices();
-    renderReviews();
+    renderMenu();
+    renderSummary();
   </script>
 </body>
 </html>
